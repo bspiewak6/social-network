@@ -5,12 +5,12 @@ const ThoughtSchema = new Schema({
   thoughtText: {
     type: String,
     required: 'Thought is required',
-    validate: [({ length }) => length <= 280, 'Thought can only be 280 characters.']
+    validate: [({ length }) => length <= 280, 'Thought must only have 280 characters.']
   },
-  // username: {
-  //   type: String,
-  //   required: true,
-  // },
+  username: {
+    type: String,
+    required: true,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -20,8 +20,15 @@ const ThoughtSchema = new Schema({
   },
   {
       toJSON: {
+        virtuals: true,
         getters: true
-    }
+    },
+    id: false
+});
+
+// get total count of reactions
+ThoughtSchema.virtual('reactionCount').get(function() {
+  return this.reactions.length;
 });
 
 const Thought = model('Thought', ThoughtSchema);
