@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 const ThoughtSchema = new Schema({
   thoughtText: {
@@ -6,14 +7,19 @@ const ThoughtSchema = new Schema({
     required: 'Thought is required',
     validate: [({ length }) => length <= 280, 'Thought can only be 280 characters.']
   },
+  // username: {
+  //   type: String,
+  //   required: true,
+  // },
   createdAt: {
     type: Date,
     default: Date.now,
     get: createdAtVal => dateFormat(createdAtVal)
-  }
-},
-{
-    toJSON: {
+  },
+  // reactions: [ReactionSchema]
+  },
+  {
+      toJSON: {
         getters: true
     }
 });
