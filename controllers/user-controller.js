@@ -29,7 +29,7 @@ const userController = {
     },
 
     // create a user -- /api/users
-    // json example { "username": "test", "email": "testing@test.com" }
+    // example { "username": "test", "email": "testing@test.com" }
     createUser({ body }, res) {
         User.create(body)
         .then(dbUserData => res.json(dbUserData))
