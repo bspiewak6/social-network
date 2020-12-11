@@ -4,6 +4,10 @@ const userController = {
     // get all users -- /api/users
     getAllUsers(req, res) {
         User.find({})
+        .populate({
+          path:'friends',
+          select: '-__v'
+        })
             .then(dbUserData => res.json(dbUserData))
             .catch(err => {
                 console.log(err);

@@ -5,17 +5,19 @@ const ThoughtSchema = new Schema({
   thoughtText: {
     type: String,
     required: 'Thought is required',
-    validate: [({ length }) => length <= 280, 'Thought must only have 280 characters.']
-  },
-  username: {
-    type: String,
-    required: true,
+    minLength: 1,
+    maxLength: 280
   },
   createdAt: {
     type: Date,
     default: Date.now,
     get: createdAtVal => dateFormat(createdAtVal)
   },
+  username: {
+    type: String,
+    required: true,
+  },
+   // use ReactionSchema to validate data for a reaction to thoughts
   // reactions: [ReactionSchema]
   },
   {
