@@ -11,7 +11,7 @@ const {
     removeOneReaction
 } = require('../../controllers/thought-controller');
 
-// /api/thoughts
+// GET all thoughts and POST to create users/api/thoughts
 router
     .route('/')
     .get(getAllThoughts)

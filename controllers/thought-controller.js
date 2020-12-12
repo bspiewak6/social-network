@@ -67,7 +67,7 @@ const thoughtController = {
           res.status(404).json({ message: 'No thought found with this id!' });
           return;
         }
-        res.json(dbThoughtData);
+        res.json({ message: 'Your thought was updated!'});
       })
       .catch(err => res.status(400).json(err));
   },
@@ -80,7 +80,7 @@ const thoughtController = {
                 res.status(404).json({ message: 'No thought found with this id!' });
                 return;
             }
-            res.json(dbUserData);
+            res.json({ message: 'Your thought was deleted!'});
         })
         .catch(err => res.json(err));
   },
@@ -97,12 +97,12 @@ const thoughtController = {
               res.status(404).json({ message: 'No user found with this id!' });
               return;
           }
-          res.json(dbUserData);
+          res.json({ message: 'Your reaction was added!'});
       })
       .catch(err => res.json(err))
   },
 
-  // REMOVE ALL reactions to a thought
+  // REMOVE ALL reactions from a thought
   removeAllReaction( req, res ) {
     Thought.findOneAndUpdate(
         { _id: req.params.thoughtId},
@@ -110,8 +110,14 @@ const thoughtController = {
         { new: true }
     )
     .select('-__v')
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => res.json(err));
+      .then(thoughtData => {
+          if (!thoughtData) {
+            res.status(404).json({ message: 'No reaction found with that id!' });
+            return;
+            }
+            res.json({ message: 'Your reactions were removed!'});
+          })
+          .catch(err => res.status(400).json(err));
   },
 
   // REMOVE ONE reaction from a thought
@@ -124,10 +130,10 @@ const thoughtController = {
       .select('-__v')
       .then(thoughtData => {
           if (!thoughtData) {
-            res.status(404).json({ message: 'No reaction found with that ID.' });
+            res.status(404).json({ message: 'No reaction found with that id!' });
             return;
             }
-            res.json(thoughtData);
+            res.json({ message: 'Your reaction was removed!'});
           })
           .catch(err => res.status(400).json(err));
   }
