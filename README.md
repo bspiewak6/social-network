@@ -19,20 +19,30 @@ This social network API app is a back-end Node.js application that was created u
 6. Moment.js
 
 ## Screenshots
-#### Get All Users and Thoughts
-![Screenshots]()
+#### Get All Users including Thoughts, Reactions and Friends
+![Screenshots](./assets/screenshot_getallusers.png)
 
-#### Get All Users and Thoughts by id
-![Screenshots]()
+#### Get All Thoughts including Reactions
+![Screenshots](./assets/screenshot_getallthoughts.png)
 
-#### Create, Update and Delete a User
-![Screenshots]()
+#### Get User by Id
+![Screenshots](./assets/screenshot_getuserbyid.png)
 
-#### Add and Delete a Friend
-![Screenshots]()
+#### Get Thought by Id
+![Screenshots](./assets/screenshot_getthoughtbyid.png)
 
-#### Add and Delete Reactions to Thoughts
-![Screenshots]()
+#### Create a User
+![Screenshots](./assets/screenshot_createuser.png)
+
+#### Update a User
+![Screenshots](./assets/screenshot_updateuser.png)
+
+#### Delete All Reactions
+![Screenshots](./assets/screenshot_deleteallreactions.png)
+
+#### Delete a Friend
+![Screenshots](./assets/screenshot_deletefriend.png)
+
 
 ## Requirements
 1. When the user enters npm start to invoke the application
@@ -44,7 +54,7 @@ This social network API app is a back-end Node.js application that was created u
     * One addition to app was to include a route that removes just one reaction to a thought instead of just having functionality that deletes all reactions
 
 ## Links
-* [Social Network Walkthrough Video]()
+* [Social Network Walkthrough Video](https://drive.google.com/file/d/1N7_QbDM4W843a8pjSLmjCFwOU3FIGJo0/view?usp=sharing)
 * [Social Network Repository](https://github.com/bspiewak6/social-network)
 
 ## License
