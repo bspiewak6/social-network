@@ -84,7 +84,7 @@ const userController = {
           }
           res.json({ message: 'Your friend was added!'});
       })
-      .catch(err => res.json(err))
+      .catch(err => res.status(400).json(err));
     },
 
     // DELETE a friend from a user

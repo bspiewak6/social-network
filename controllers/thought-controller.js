@@ -56,7 +56,7 @@ const thoughtController = {
         }
         res.json({ message: 'Your thought was created!'});
       })
-      .catch(err => res.json(err));
+      .catch(err => res.status(400).json(err));
   },
 
   // UPDATE a thought by id 
@@ -73,16 +73,23 @@ const thoughtController = {
   },
 
   // DELETE thought and UPDATE user
-  removeThought({ params }, res) {
-    Thought.findOneAndDelete({ _id: params.id })
+  removeThought(req, res) {
+    Thought.findOneAndDelete({ _id: req.params.id })
         .then(deletedThought => {
             if (!deletedThought) {
                 res.status(404).json({ message: 'No thought found with this id!' });
                 return;
             }
-            res.json({ message: 'Your thought was deleted!'});
+            return User.findOneAndUpdate(
+              { username: deletedThought.username },
+              { $pull: { thoughts: { id: req.params.id } } },
+              { new: true, runValidators: true }
+            )
+              .then(deletedThought => {
+              res.json({ message: 'Your thought was deleted!'});
+              });
         })
-        .catch(err => res.json(err));
+        .catch(err => res.status(400).json(err));
   },
 
   // ADD a reaction to a thought 
@@ -99,7 +106,7 @@ const thoughtController = {
           }
           res.json({ message: 'Your reaction was added!'});
       })
-      .catch(err => res.json(err))
+      .catch(err => res.status(400).json(err));
   },
 
   // REMOVE ALL reactions from a thought
