@@ -1,10 +1,8 @@
-# Social Network API
+# Social Network Back-End API Application
 ![License](https://img.shields.io/badge/license-MIT%20License-blue.svg)
 
 ## Description
-AS A social media startup
-I WANT an API for my social network that uses a NoSQL database
-SO THAT my website can handle large amounts of unstructured data
+This social network API app is a back-end Node.js application that was created using a NoSQL database. The app does not have a front-end so the user will need to run npm install and test out the routes using Insomnia Core. Users are created, can be updated and deleted. All users have the ability to add thoughts, friends and reactions. The key technologies used are listed below. 
 
 ## Table of Contents
 * [Technologies](#technologies)
@@ -18,20 +16,32 @@ SO THAT my website can handle large amounts of unstructured data
 3. Express.js
 4. MongoDB
 5. Mongoose.js
+6. Moment.js
 
 ## Screenshots
+#### Get All Users and Thoughts
+![Screenshots]()
+
+#### Get All Users and Thoughts by id
+![Screenshots]()
+
+#### Create, Update and Delete a User
+![Screenshots]()
+
+#### Add and Delete a Friend
+![Screenshots]()
+
+#### Add and Delete Reactions to Thoughts
 ![Screenshots]()
 
 ## Requirements
-GIVEN a social network API
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
-WHEN I open API GET routes in Insomnia Core for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
-WHEN I test API POST, PUT, and DELETE routes in Insomnia Core
-THEN I am able to successfully create, update, and delete users and thoughts in my database
-WHEN I test API POST and DELETE routes in Insomnia Core
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+1. When the user enters npm start to invoke the application
+    * the server is started and the Mongoose models are synced to the MongoDB database
+2. The app is built with API GET routes for viewing users and thoughts through Insomnia Core
+    * this data is shows in a formatted JSON
+3. Next, the app also includes POST, PUT and DELETE routes that can create, update and delete users and thoughts in the database
+4. Lastly, the app has POST and DELETE routes to create and delete reactions to thoughts as well as add and remove friends from a user's friend list. 
+    * One addition to app was to include a route that removes just one reaction to a thought instead of just having functionality that deletes all reactions
 
 ## Links
 * [Social Network Walkthrough Video]()
